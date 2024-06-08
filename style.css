@@ -1,4 +1,4 @@
-@import url('../tapple/main.css');
+@import url('./tapple/main.css');
 
 .card {
     backdrop-filter: blur(15px);
