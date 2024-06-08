@@ -6,39 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>加入 - 尼科夫在线工具</title>
     <link rel="stylesheet" href="style.css">
+    <script src='https://recaptcha.net/recaptcha/api.js?render='></script>
 </head>
 <body style="height:100%;background: none;display: flex;justify-content: center;">
-    <div class="box card" style="width: 40%;position: absolute;top:calc(50% - 125px);height: 250px;min-width: 500px;margin: 0;">
-        <p class="tit">注册</p>
+    <div class="box card" style="width: 40%;position: absolute;top:calc(50% - 125px);height: 350px;min-width: 500px;margin: 0;">
+        <h1><p>信息填写</p></h1>
         <div class="body" style="padding: 20px;">
             <div style="display: flex;">
                 <p style="width: 50px;margin: 0;padding: 5px 0;">域名</p>
-                <div id="domain" class="inp" style="flex-grow: 1;user-select:none;">example.com</div>
-            </div>
-            <input type="text" style="width: 100%;" onchange="$('#domain').text($(this).val())" value="example.com">
+                <input id="domain" type="text" class="inp" style="flex-grow: 1;" value=""></div>
+
+            <div style="display: flex;">
+                <p style="width: 50px;margin: 0;padding: 5px 0;">站长</p>
+                <input id="owner" type="text" class="inp" style="flex-grow: 1;" value=""></div>
+
             <div style="display: flex;">
                 <p style="width: 50px;margin: 0;padding: 5px 0;">站名</p>
-                <div id="sitename" class="inp" style="flex-grow: 1;user-select:none;">我的网站</div>
-            </div>
-            <input type="text" style="width: 100%;" onchange="$('#sitename').text($(this).val())" value="我的网站">
+                <input id="sitename" type="text" class="inp" style="flex-grow: 1;" value=""></div>
+
             <div style="display: flex;">
                 <p style="width: 50px;margin: 0;padding: 5px 0;">简介</p>
-                <div id="description" class="inp" style="flex-grow: 1;user-select:none;">这是一个简介。</div>
-            </div>
-            <input type="text" style="width: 100%;" onchange="$('#description').text($(this).val())" value="这是一个简介。">
-            <div style="display: flex;">
-                <p style="width: 50px;margin: 0;padding: 5px 0;">站长名</p>
-                <div id="owner" class="inp" style="flex-grow: 1;user-select:none;">昵称</div>
-            </div>
-            <input type="text" style="width: 100%;" onchange="$('#owner').text($(this).val())" value="昵称">
-            <p>已有账号?<a href="login.html" class="jump">登录</a></p>
+                <input id="description" type="text" class="inp" style="flex-grow: 1;" value=""></div>
+
+	    <div class="g-recaptcha" data-sitekey="6LfXD_QpAAAAAE3TL7f0YVSkQMN-WVM_Kt_heN3O"></div>
             <loading style="position: absolute;right: 80px;bottom: 10px;opacity: 0;transition: 100ms;" id="loading">
                 <svg width="28px" height="28px" viewBox="0 0 16 16"><circle cx="8px" cy="8px" r="7px"></circle><circle cx="8px" cy="8px" r="6px"></circle></svg>
             </loading>
-            <a class="btn" style="position: absolute;right: 10px;bottom: 10px;" onclick="$('#loading').css('opacity',1);setTimeout(() => {window.location='robot.html'}, 200);">继续</a>
+            <a class="btn" style="position: absolute;right: 10px;bottom: 10px;" onclick="submitForm()">继续</a>
         </div>
     </div>
-    <script src="../tapple/jq.min.js"></script>
-    <script src="../tapple/scroll.js"></script>
+    <script src="./tapple/jq.min.js"></script>
+    <script src="./tapple/scroll.js"></script>
+    <script>
+        function submitForm() {
+            if (grecaptcha.getResponse() === "") {
+                alert("sensei等等啊sensei，你还没完成reCAPTCHA呢！");
+                alert("omg its a Google reCAPTCHA");
+            } else {
+                $('#loading').css('opacity',1);
+                setTimeout(() => {window.location='robot.html'}, 200);
+            }
+        }
+    </script>
 </body>
 </html>
