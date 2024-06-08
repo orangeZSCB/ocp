@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>注册 - 尼科夫在线工具</title>
+    <title>加入 - 尼科夫在线工具</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body style="height:100%;background: none;display: flex;justify-content: center;">
@@ -12,10 +12,25 @@
         <p class="tit">注册</p>
         <div class="body" style="padding: 20px;">
             <div style="display: flex;">
-                <p style="width: 50px;margin: 0;padding: 5px 0;">电话</p>
-                <div id="telephone" class="inp" style="flex-grow: 1;user-select:none;">10000000000</div>
+                <p style="width: 50px;margin: 0;padding: 5px 0;">域名</p>
+                <div id="domain" class="inp" style="flex-grow: 1;user-select:none;">example.com</div>
             </div>
-            <input type="range" min="10000000000" max="19999999999" step="1" style="width: 100%;" onchange="$('#telephone').text($('input[type=range][value=10000000000]').val())" value="10000000000">
+            <input type="text" style="width: 100%;" onchange="$('#domain').text($(this).val())" value="example.com">
+            <div style="display: flex;">
+                <p style="width: 50px;margin: 0;padding: 5px 0;">站名</p>
+                <div id="sitename" class="inp" style="flex-grow: 1;user-select:none;">我的网站</div>
+            </div>
+            <input type="text" style="width: 100%;" onchange="$('#sitename').text($(this).val())" value="我的网站">
+            <div style="display: flex;">
+                <p style="width: 50px;margin: 0;padding: 5px 0;">简介</p>
+                <div id="description" class="inp" style="flex-grow: 1;user-select:none;">这是一个简介。</div>
+            </div>
+            <input type="text" style="width: 100%;" onchange="$('#description').text($(this).val())" value="这是一个简介。">
+            <div style="display: flex;">
+                <p style="width: 50px;margin: 0;padding: 5px 0;">站长名</p>
+                <div id="owner" class="inp" style="flex-grow: 1;user-select:none;">昵称</div>
+            </div>
+            <input type="text" style="width: 100%;" onchange="$('#owner').text($(this).val())" value="昵称">
             <p>已有账号?<a href="login.html" class="jump">登录</a></p>
             <loading style="position: absolute;right: 80px;bottom: 10px;opacity: 0;transition: 100ms;" id="loading">
                 <svg width="28px" height="28px" viewBox="0 0 16 16"><circle cx="8px" cy="8px" r="7px"></circle><circle cx="8px" cy="8px" r="6px"></circle></svg>
