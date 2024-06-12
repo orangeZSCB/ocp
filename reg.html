@@ -44,10 +44,37 @@
                 alert("sensei等等啊sensei，你还没完成reCAPTCHA呢！");
                 alert("omg its a Google reCAPTCHA");
             } else {
-                
-                alert("sensei，这个page还没有整理好，以后再来探索吧！");
-                
-                alert("omg its an alert box");
+                const data = {
+                    domain: document.getElementById('domain').value,
+                    sitename: document.getElementById('sitename').value,
+                    description: document.getElementById('description').value,
+                    owner: document.getElementById('owner').value
+                };
+
+                $('#loading').css('opacity', 1);
+
+                fetch('http://localhost:8080/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    $('#loading').css('opacity', 0);
+                    if (data.error) {
+                        alert('Error: ' + data.error);
+                    } else {
+                        alert('Data received and stored successfully. Rank: ' + data.rank);
+                        window.location = 'robot.html';
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('提交失败，请稍后重试');
+                    $('#loading').css('opacity', 0);
+                });
             }
         }
     </script>
