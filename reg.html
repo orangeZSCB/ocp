@@ -53,7 +53,7 @@
 
                 $('#loading').css('opacity', 1);
 
-                fetch('http://localhost:8080/submit', {
+                fetch('http://183.232.249.240:44825/submit', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -64,15 +64,14 @@
                 .then(data => {
                     $('#loading').css('opacity', 0);
                     if (data.error) {
-                        alert('Error: ' + data.error);
+                        alert('啊啊啊！是个错误！Orange说请把这个让sensei交给他: ' + data.error);
                     } else {
-                        alert('Data received and stored successfully. Rank: ' + data.rank);
-                        window.location = 'robot.html';
+                        alert('好耶，sensei！ 你是第 ' + data.rank + ' 个加入橙 ICP 的！');
                     }
                 })
                 .catch((error) => {
                     console.error('Error:', error);
-                    alert('提交失败，请稍后重试');
+                    alert('啊啊啊！是个错误！请稍后再试试吧sensei');
                     $('#loading').css('opacity', 0);
                 });
             }
